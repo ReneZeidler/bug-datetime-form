@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ion-datetime value update
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ion-datetime value update</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+
+    <ion-list>
+      <ion-accordion-group>
+        <ion-accordion value="mydate">
+          <ion-item slot="header">
+            <ion-label>My Date Accordion</ion-label>
+            <ion-label slot="end">{{myDate.getRawValue()}}</ion-label>
+          </ion-item>
+          <ion-datetime slot="content" [formControl]="myDate" presentation="date"></ion-datetime>
+        </ion-accordion>
+      </ion-accordion-group>
+
+      <ion-item>
+        <ion-label>My Date Popover</ion-label>
+        <ion-datetime-button datetime="popoverdate"></ion-datetime-button>
+        <ion-popover [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime [formControl]="myDate" presentation="date" id="popoverdate"></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+    </ion-list>
+
+    <ion-button (click)="setDate('2023-01-01')">Set January</ion-button>
+    <ion-button (click)="setDate('2023-02-01')">Set February</ion-button>
+    <p>Current value: {{myDate.getRawValue()}}</p>
+  </div>
+</ion-content>
